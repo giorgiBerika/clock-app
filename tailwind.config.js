@@ -6,11 +6,15 @@ export default {
   ],
   theme: {
     extend: {
+
       colors: {
         colorBlackFirst: '#000000',
         colorBlackSecond: '#303030',
         colorWhiteCommon: '#FFFFFF',
         colorGrey: '#999999'
+      },
+      fontFamily: {
+        custom: ['Inter', 'sans-serif']
       }
     },
   },
