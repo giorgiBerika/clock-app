@@ -1,21 +1,21 @@
-import { useState } from 'react'
 import './App.css'
+import React, { useState } from 'react'
 
-import desktopBgDay from './assets/desktop/bg-image-daytime.jpg';
+import { TopSection, BottomSection } from './sections/main';
 
-function App() {
+const App: React.FC = () =>{
 
- const onClickHandler = () => {
-    const divOne = document.querySelector('.div-1') as HTMLElement;
+//  const onClickHandler = () => {
+//     const divOne = document.querySelector('.div-1') as HTMLElement;
 
-    if (divOne) {
+//     if (divOne) {
 
-      divOne.style.height = (divOne.style.height === '100%') ? '50%' : '100%';
-    }
-  };
+//       divOne.style.height = (divOne.style.height === '100%') ? '50%' : '100%';
+//     }
+//   };
   return (
     <>
-      <div className={`
+      <section className={`
         w-screen
         min-h-screen
         h-screen
@@ -25,18 +25,14 @@ function App() {
         bg-cover
         h-full
         `}>
-        {/* border
-        border-rose-500 */}
-        <div className='div-1 div'>
-          div 1
-        </div>
-        <div className='div-2 div'>
-          div 2
-        </div>
-
-        <button type='button' onClick={onClickHandler}>click it</button>
         
-      </div>
+        <TopSection />
+        <BottomSection />
+        
+
+        {/* <button type='button' onClick={onClickHandler}>click it</button> */}
+        
+      </section>
     </>
   )
 }
