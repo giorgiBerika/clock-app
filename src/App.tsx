@@ -28,7 +28,7 @@ const App: React.FC = () =>{
         
         font-custom
         font-normal
-        
+        overflow-hidden
         `}>
         
         <TopSection />

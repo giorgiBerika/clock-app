@@ -11,6 +11,10 @@ const TopSection: React.FC<TopSectionInterface> = () =>
     return (
         <>
             <section className={`
+                flex
+                flex-col
+                justify-between
+                h-screen
                 bg-black
                 bg-opacity-50
                 
@@ -20,7 +24,11 @@ const TopSection: React.FC<TopSectionInterface> = () =>
             `}>
                 <RandomQuote />
 
-                <div>
+                <div className={`
+                 flex
+                 justify-between
+                 items-end
+                `}>
                     <TimePart />
                     <ToggleBtn />
                 </div>
