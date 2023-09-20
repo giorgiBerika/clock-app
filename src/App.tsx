@@ -23,7 +23,12 @@ const App: React.FC = () =>{
         bg-center
         bg-no-repeat
         bg-cover
+
         h-full
+        
+        font-custom
+        font-normal
+        
         `}>
         
         <TopSection />
