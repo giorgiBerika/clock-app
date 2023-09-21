@@ -11,7 +11,8 @@ const RandomQuote: React.FC<RandomQuoteInterface> = () =>
     return (
         <>
             <div className="
-             text-lg
+             md:text-lg
+             text-xs
              leading-7
              text-colorWhiteCommon
              max-w-xl
@@ -23,6 +24,8 @@ const RandomQuote: React.FC<RandomQuoteInterface> = () =>
                 `}>
                     <p className="
                      font-normal
+                     md:max-w-xl
+                     max-w-[290px]
                     ">
                         “The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.”
                     </p>
@@ -30,6 +33,7 @@ const RandomQuote: React.FC<RandomQuoteInterface> = () =>
                         className="
                         translate-y-[50%]
                          cursor-pointer
+                         ml-2
                         " 
                         src={refreshIcon} 
                         alt="refresh icon" />

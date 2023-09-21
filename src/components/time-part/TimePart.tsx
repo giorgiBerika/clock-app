@@ -27,11 +27,16 @@ const TimePart: React.FC<TimePartInterface> = () =>
             ">
                 <img src={sunIcon} alt="sun icon" />
                 <span className="
-                 text-xl
+                 xl:text-xl
+                 md:text-lg
+                 text-sm
                  font-normal
                  leading-wide
                  
                 ">GOOD MORNING, IT’S CURRENTLY</span>
+                {/* xl-1280 */}
+                {/* md-768 */}
+
             </div>
             <div className={`
              flex
@@ -42,21 +47,26 @@ const TimePart: React.FC<TimePartInterface> = () =>
              my-[6rem]
             `}>
                 <h2 className="
-                 
-                 text-[200px]
+                 xl:text-[200px]
+                 md:text-[175px]
+                 text-[100px]
                  leading-8
                  font-bold
 
                 ">11:37</h2>
                 <span className="
-                 text-4xl
+                 lg:text-4xl
+                 md:text-3xl
+                 text-sm
                  font-light
                  leading-7
                  translate-y-[150%]
                 ">bst</span>
             </div>
             <span className="
-             text-2xl
+             xl:text-xl
+             md:text-lg
+             text-sm
              font-bold
              leading-7
              tracking-wide

@@ -14,20 +14,31 @@ const TopSection: React.FC<TopSectionInterface> = () =>
                 flex
                 flex-col
                 justify-between
+                md:items-start
+                items-center
                 h-screen
                 bg-black
                 bg-opacity-50
                 
-                px-40
+                xl:px-40
+                md:pl-16
                 pt-14
-                pb-28
+                xl:pb-28
+                pb-16
             `}>
                 <RandomQuote />
 
                 <div className={`
                  flex
                  justify-between
-                 items-end
+                 xl:items-end
+                 xl:flex-row
+                 flex-col
+                 md:items-start
+                 items-center
+                 gap-y-[80px]
+                 w-full
+                 
                 `}>
                     <TimePart />
                     <ToggleBtn />
