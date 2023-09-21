@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useMyContext } from "../../App";
 import btnArrow from '../../assets/small-icons/icon-arrow-up.svg'
 
 interface ToggleButtonInterface{
@@ -8,6 +8,14 @@ interface ToggleButtonInterface{
 
 const ToggleBtn: React.FC<ToggleButtonInterface> = () => 
 {
+    const {moreInfo, toggleMoreInfo} = useMyContext();
+
+    const onClickHandler = () =>
+    {
+        console.log(moreInfo);
+        toggleMoreInfo(!moreInfo);
+        console.log(moreInfo);
+    }
     return (
         <>
             <div className="
@@ -22,7 +30,9 @@ const ToggleBtn: React.FC<ToggleButtonInterface> = () =>
              pl-7
 
              cursor-pointer
-            ">
+            "
+            onClick={onClickHandler}
+            >
                 <span className="
                  text-4
                  font-bold

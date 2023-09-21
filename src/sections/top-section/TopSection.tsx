@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useMyContext } from "../../App";
 import { RandomQuote, TimePart, ToggleBtn } from "../../components/main";
 
 interface TopSectionInterface {
@@ -8,6 +8,8 @@ interface TopSectionInterface {
 
 const TopSection: React.FC<TopSectionInterface> = () => 
 {
+    const {moreInfo} = useMyContext();
+
     return (
         <>
             <section className={`
@@ -16,7 +18,7 @@ const TopSection: React.FC<TopSectionInterface> = () =>
                 justify-between
                 md:items-start
                 items-center
-                h-screen
+                h-50
                 bg-black
                 bg-opacity-50
                 
@@ -25,8 +27,16 @@ const TopSection: React.FC<TopSectionInterface> = () =>
                 pt-14
                 xl:pb-28
                 pb-16
+
+                transition-height
+                duration-300
+                ease-in-out
+
+                ${moreInfo ? 'h-[500px] xl:pb-14 ' : 'full-size'}
             `}>
+                {!moreInfo && 
                 <RandomQuote />
+                }
 
                 <div className={`
                  flex

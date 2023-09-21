@@ -1,31 +1,11 @@
-/* body
+.bottom-section-bg
 {
-    overflow: hidden;
-}
-.div
-{
-    width: 90%;
-    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20.387113571166992px);
 }
 
-.div-1
+.full-size
 {
-    border: 1px solid red;
-    background-color: red;
-    height: 50%;
-    transition-duration: 350ms;
+    min-height: 100vh;
+    transition-duration: 300ms;
 }
-.div-2
-{   height: 50%;
-    background-color: blue;
-    border: 1px solid blue
-}
-button
-{
-    position: absolute;
-    top:0;
-    left: 0;
-    background-color: green;
-    border: 1px solid green;
-
-} */

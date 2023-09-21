@@ -16,6 +16,7 @@ const RandomQuote: React.FC<RandomQuoteInterface> = () =>
              leading-7
              text-colorWhiteCommon
              max-w-xl
+             
             ">
                 <div className={`
                  flex
