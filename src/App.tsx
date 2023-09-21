@@ -19,7 +19,12 @@ const App: React.FC = () =>{
         w-screen
         min-h-screen
         h-screen
-        bg-desktopDay
+
+
+        lg:bg-desktopDay
+        sm:bg-tabletDay
+        bg-mobileDay
+
         bg-center
         bg-no-repeat
         bg-cover
