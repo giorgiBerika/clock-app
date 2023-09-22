@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState, useRef} from "react";
 
 import refreshIcon from '../../assets/small-icons/icon-refresh.svg'
 import { useMyContext } from "../../App";
+import axios from "axios";
 
 interface RandomQuoteInterface {
 
@@ -10,6 +11,25 @@ interface RandomQuoteInterface {
 const RandomQuote: React.FC<RandomQuoteInterface> = () => 
 {
     const {moreInfo} = useMyContext();
+    const [quoteText, setQuoteText] = useState<string>('');
+    const [quoteAuthor, setQuoteAuthor] = useState<string>('')
+
+    const defaultQuote = useRef<string>('The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.');
+    const defaultQuoteAuthor = useRef<string>('Ada Lovelace')
+    
+        async function getQuote() {
+            try {
+                const response = await axios.get('https://api.quotable.io/random');
+                
+                setQuoteText(response.data.content);
+                setQuoteAuthor(response.data.author)
+                
+            }catch(error){
+                console.log('Error fetching data:', error)
+            }
+        };
+        
+
     return (
         <>
             <div className={`
@@ -35,9 +55,10 @@ const RandomQuote: React.FC<RandomQuoteInterface> = () =>
                      md:max-w-xl
                      max-w-[290px]
                     ">
-                        “The science of operations, as derived from mathematics more especially, is a science of itself, and has its own abstract truth and value.”
+                        {quoteText || defaultQuote.current}
                     </p>
                     <img
+                        onClick={getQuote}
                         className="
                         translate-y-[50%]
                          cursor-pointer
@@ -48,7 +69,7 @@ const RandomQuote: React.FC<RandomQuoteInterface> = () =>
                 </div>
                 <h2 className="
                  font-bold
-                ">Ada Lovelace</h2>
+                ">{quoteAuthor || defaultQuoteAuthor.current}</h2>
             </div>
         </>
     )
