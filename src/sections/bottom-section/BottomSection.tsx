@@ -9,7 +9,7 @@ currentGlobTime: number;
 const BottomSection: React.FC<BottomSectionInterface> = ({currentGlobTime}) => 
 {
     const {changeDayWeek, changeWeekNumber,
-        changeDayYear, changeTimeZone, moreInfo,
+        changeDayYear, changeTimeZone, 
         timeZone, dayYear, dayWeek, weekNumber} = useMyContext();
         
  useEffect(() => {
@@ -81,7 +81,7 @@ const BottomSection: React.FC<BottomSectionInterface> = ({currentGlobTime}) =>
              sm:border-l-2
              sm:border-colorBlackSecond
              sm:border-opacity-25
-             sm:pl-24
+             pl-24
             `}
             
             >

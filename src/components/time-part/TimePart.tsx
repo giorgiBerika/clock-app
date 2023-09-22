@@ -3,12 +3,14 @@ import React, {useEffect, useState} from "react";
 import sunIcon from '../../assets/small-icons/icon-sun.svg'
 import moonIcon from '../../assets/small-icons/icon-moon.svg'
 
+
 interface TimePartInterface{
     setCurrentGlobTime: (newTime: number) => void;
 }
 
 const TimePart: React.FC<TimePartInterface> = ({setCurrentGlobTime}) => 
-{   
+{ 
+
     const [currentTime, setCurrentTime] = useState<string>('');
     const [currentHour, setCurrentHour] = useState<number>(12);
     const [currentMinute, setCurrentMinute] = useState<number | string>(22);
