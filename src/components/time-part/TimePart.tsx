@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 
 import sunIcon from '../../assets/small-icons/icon-sun.svg'
 import moonIcon from '../../assets/small-icons/icon-moon.svg'
-import { useMyContext } from "../../App";
 
 interface TimePartInterface{
     setCurrentGlobTime: (newTime: number) => void;
@@ -10,7 +9,6 @@ interface TimePartInterface{
 
 const TimePart: React.FC<TimePartInterface> = ({setCurrentGlobTime}) => 
 {   
-    const {changeCurrentHour} = useMyContext();
     const [currentTime, setCurrentTime] = useState<string>('');
     const [currentHour, setCurrentHour] = useState<number>(12);
     const [currentMinute, setCurrentMinute] = useState<number | string>(22);
@@ -26,7 +24,6 @@ const TimePart: React.FC<TimePartInterface> = ({setCurrentGlobTime}) =>
             setCurrentTime(currentTime)
             setCurrentHour(currentHour)
             setCurrentMinute(formattedMinute);
-            changeCurrentHour(currentHour);
 
             setCurrentGlobTime(currentHour)
         };

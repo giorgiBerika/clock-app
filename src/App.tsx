@@ -9,7 +9,6 @@ interface MyContextValue {
   dayYear: string | number;
   dayWeek: string | number;
   weekNumber: string | number;
-  changeCurrentHour: (newVal: number) => void;
   changeWeekNumber: (newVal: string | number) => void;
   changeDayWeek: (newVal: string | number) => void;
   changeDayYear: (newVal: string | number) => void;
@@ -29,17 +28,12 @@ const MyContextProvider: React.FC<MyContextProviderProps> = ({children}) =>
 {
   const [moreInfo, setMoreInfoOpen] = useState<boolean>(false);
 
-  const [currentGlobHour, setCurrentGlobHour] = useState<number>(12);
 
   const [timeZone, setTimeZone] = useState<string>('');
   const [dayYear, setDayYear] = useState<string | number>('');
   const [dayWeek, setDayWeek] = useState<string | number>('');
   const [weekNumber, setWeekNumber] = useState<string | number>('');
   
-  const changeCurrentHour = (currentHour: number) => 
-  {
-    setCurrentGlobHour(currentHour)
-  }
   const toggleMoreInfo = (openedInfo: boolean) => 
   {
     setMoreInfoOpen(openedInfo);
@@ -66,7 +60,6 @@ const MyContextProvider: React.FC<MyContextProviderProps> = ({children}) =>
     dayYear,
     dayWeek,
     weekNumber,
-    changeCurrentHour,
     changeWeekNumber,
     changeDayWeek,
     changeDayYear,
