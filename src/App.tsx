@@ -1,10 +1,18 @@
 import './App.css'
-import React, {  useState, createContext, useContext, ReactNode } from 'react'
+import React, {  useState, createContext, useContext, ReactNode, useEffect } from 'react'
 
 import { TopSection, BottomSection } from './sections/main';
-
+import axios from 'axios';
 interface MyContextValue {
   moreInfo: boolean;
+  timeZone: string;
+  dayYear: string | number;
+  dayWeek: string | number;
+  weekNumber: string | number;
+  changeWeekNumber: (newVal: string | number) => void;
+  changeDayWeek: (newVal: string | number) => void;
+  changeDayYear: (newVal: string | number) => void;
+  changeTimeZone: (newVal: string) => void;
   toggleMoreInfo: (newValue: boolean) => void;
 }
 
@@ -20,12 +28,41 @@ const MyContextProvider: React.FC<MyContextProviderProps> = ({children}) =>
 {
   const [moreInfo, setMoreInfoOpen] = useState<boolean>(false);
 
+  const [timeZone, setTimeZone] = useState<string>('');
+  const [dayYear, setDayYear] = useState<string | number>('');
+  const [dayWeek, setDayWeek] = useState<string | number>('');
+  const [weekNumber, setWeekNumber] = useState<string | number>('');
+  
   const toggleMoreInfo = (openedInfo: boolean) => 
   {
     setMoreInfoOpen(openedInfo);
   }
+  const changeWeekNumber = (weekNum: string| number) =>
+  {
+    setWeekNumber(weekNum)
+  }
+  const changeDayWeek = (dayWeek: string | number) =>
+  {
+    setDayWeek(dayWeek)
+  }
+  const changeDayYear = (dayYear: string | number) =>
+  {
+    setDayYear(dayYear);
+  }
+  const changeTimeZone = (timeZone: string) => 
+  {
+    setTimeZone(timeZone)
+  }
   const contextValue: MyContextValue = {
     moreInfo,
+    timeZone,
+    dayYear,
+    dayWeek,
+    weekNumber,
+    changeWeekNumber,
+    changeDayWeek,
+    changeDayYear,
+    changeTimeZone,
     toggleMoreInfo
   }
    return <MyContext.Provider value={contextValue}>{children}</MyContext.Provider> 
@@ -42,15 +79,22 @@ export const useMyContext = (): MyContextValue => {
 }
 
 const App: React.FC = () =>{
-//  const onClickHandler = () => {
-//     const divOne = document.querySelector('.div-1') as HTMLElement;
 
-//     if (divOne) {
 
-//       divOne.style.height = (divOne.style.height === '100%') ? '50%' : '100%';
-//     }
-//   };
- 
+  // useEffect(() => {
+  //   async function getWorldTime() {
+  //     try {
+
+  //       const response = await axios.get('http://worldtimeapi.org/api/timezone/Asia/Tbilisi');
+  //       console.log(response.data.day_of_week);
+  //       changeDayWeek()
+        
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   }
+  //   getWorldTime();
+  // }, [])
   return (
     <>
     <MyContextProvider>

@@ -1,14 +1,34 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { ExactInfo } from "../../components/main";
 import { useMyContext } from "../../App";
+import axios from "axios";
 interface BottomSectionInterface {
 
 }
 
 const BottomSection: React.FC<BottomSectionInterface> = () => 
 {
-    const {moreInfo} = useMyContext();
+    const {changeDayWeek, changeWeekNumber,
+        changeDayYear, changeTimeZone, moreInfo,
+        timeZone, dayYear, dayWeek, weekNumber} = useMyContext();
+        
+ useEffect(() => {
+    async function getWorldTime() {
+      try {
 
+        const response = await axios.get('http://worldtimeapi.org/api/timezone/Asia/Tbilisi');
+        console.log(response.data.timezone);
+        changeTimeZone(response.data.timezone);
+        changeDayYear(response.data.day_of_year);
+        changeDayWeek(response.data.day_of_week);
+        changeWeekNumber(response.data.week_number);
+        
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+    getWorldTime();
+  }, [])
     return (
         <>
           <section className={`
@@ -29,11 +49,11 @@ const BottomSection: React.FC<BottomSectionInterface> = () =>
             `}>
                 <ExactInfo 
                     title={"CURRENT TIMEZONE"}
-                    text={"Europe/London"}
+                    text={timeZone}
                     />
                 <ExactInfo 
                     title={"Day of the year"}
-                    text={"295"}
+                    text={dayYear}
                 />
             </div>
             <div className={`
@@ -50,11 +70,11 @@ const BottomSection: React.FC<BottomSectionInterface> = () =>
             `}>
                 <ExactInfo 
                     title={"Day of the week"}
-                    text={"5"}
+                    text={dayWeek}
                     />
                 <ExactInfo 
                     title={"Week number"}
-                    text={"42"}
+                    text={weekNumber}
                 />
             </div>
           </section>

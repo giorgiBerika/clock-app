@@ -2,7 +2,7 @@ import React from "react";
 
 interface ExactInfoInterface{
     title: string;
-    text: string;
+    text: string | number;
 }
 
 const ExactInfo: React.FC<ExactInfoInterface> = ({title,text}) => 
