@@ -92,7 +92,8 @@ const App: React.FC = () =>{
        ${(currentGlobTime > 6 && currentGlobTime < 17) ? 
         'lg:bg-desktopDay sm:bg-tabletDay bg-mobileDay' :
         'lg:bg-desktopNight sm:bg-tabletNight bg-mobileNight' 
-      }
+        }
+        ${!(currentGlobTime) ? 'lg:bg-desktopDay sm:bg-tabletDay bg-mobileDay' : ''}
         bg-center
         bg-no-repeat
         bg-cover
