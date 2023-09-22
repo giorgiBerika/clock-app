@@ -12,9 +12,7 @@ const ToggleBtn: React.FC<ToggleButtonInterface> = () =>
 
     const onClickHandler = () =>
     {
-        console.log(moreInfo);
         toggleMoreInfo(!moreInfo);
-        console.log(moreInfo);
     }
     return (
         <>
@@ -42,10 +40,15 @@ const ToggleBtn: React.FC<ToggleButtonInterface> = () =>
                  text-colorBlackFirst
                  opacity-50
                  mr-[13px]
+                 
                 ">more</span>
                 <img 
                     className={`
-                     rotate-180
+                    transition-all
+                    duration-150
+                    hover:opacity-50
+                    ${moreInfo ? '' : 'rotate-180'}
+                     
                     `}
                     src={btnArrow} 
                     alt="Arrow icon" />

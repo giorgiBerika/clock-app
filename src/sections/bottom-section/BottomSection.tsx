@@ -13,7 +13,7 @@ const BottomSection: React.FC<BottomSectionInterface> = () =>
         <>
           <section className={`
            bottom-section-bg
-           h-full
+           h-1/2
            flex
            items-start
            justify-between
@@ -21,9 +21,6 @@ const BottomSection: React.FC<BottomSectionInterface> = () =>
            py-16
            pl-40
 
-           transition
-           duration-300
-           ease-in-out
           `}>
             <div className={`
              flex

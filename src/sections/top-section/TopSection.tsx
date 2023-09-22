@@ -15,10 +15,10 @@ const TopSection: React.FC<TopSectionInterface> = () =>
             <section className={`
                 flex
                 flex-col
-                justify-between
+                justify-end
                 md:items-start
                 items-center
-                h-50
+                
                 bg-black
                 bg-opacity-50
                 
@@ -32,11 +32,11 @@ const TopSection: React.FC<TopSectionInterface> = () =>
                 duration-300
                 ease-in-out
 
-                ${moreInfo ? 'h-[500px] xl:pb-14 ' : 'full-size'}
+                ${moreInfo ? 'h-1/2 xl:pb-14 ' : 'h-full'}
             `}>
-                {!moreInfo && 
                 <RandomQuote />
-                }
+                {/* {!moreInfo && 
+                } */}
 
                 <div className={`
                  flex

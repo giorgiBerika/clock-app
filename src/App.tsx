@@ -56,7 +56,6 @@ const App: React.FC = () =>{
     <MyContextProvider>
       <section className={`
         w-screen
-        min-h-screen
         h-screen
 
 
@@ -67,8 +66,6 @@ const App: React.FC = () =>{
         bg-center
         bg-no-repeat
         bg-cover
-
-        h-full
         
         font-custom
         font-normal

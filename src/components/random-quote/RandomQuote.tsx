@@ -1,6 +1,7 @@
 import React from "react";
 
 import refreshIcon from '../../assets/small-icons/icon-refresh.svg'
+import { useMyContext } from "../../App";
 
 interface RandomQuoteInterface {
 
@@ -8,16 +9,22 @@ interface RandomQuoteInterface {
 
 const RandomQuote: React.FC<RandomQuoteInterface> = () => 
 {
+    const {moreInfo} = useMyContext();
     return (
         <>
-            <div className="
+            <div className={`
              md:text-lg
              text-xs
              leading-7
              text-colorWhiteCommon
              max-w-xl
-             
-            ">
+             transition-all
+             duration-300
+             absolute
+             top-[10%]
+             ${moreInfo ? 'translate-x-[-150%] opacity-20' : ''}
+            `}
+            >
                 <div className={`
                  flex
                  items-start
