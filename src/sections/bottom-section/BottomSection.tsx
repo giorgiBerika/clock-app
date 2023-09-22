@@ -17,7 +17,6 @@ const BottomSection: React.FC<BottomSectionInterface> = () =>
       try {
 
         const response = await axios.get('http://worldtimeapi.org/api/timezone/Asia/Tbilisi');
-        console.log(response.data.timezone);
         changeTimeZone(response.data.timezone);
         changeDayYear(response.data.day_of_year);
         changeDayWeek(response.data.day_of_week);

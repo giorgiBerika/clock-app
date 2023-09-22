@@ -11,16 +11,19 @@ const TimePart: React.FC<TimePartInterface> = () =>
 {   
     const [currentTime, setCurrentTime] = useState<string>('');
     const [currentHour, setCurrentHour] = useState<number>(12);
-    const [currentMinute, setCurrentMinute] = useState<number>(22);
+    const [currentMinute, setCurrentMinute] = useState<number | string>(22);
     
     useEffect(() => {
         function updateCurrentTime() {
             const newDate = new Date();
             const currentHour = newDate.getHours();
             const currentMinute = newDate.getMinutes();
+
+            const formattedMinute = (currentMinute < 10) ? `0${currentMinute}` : currentMinute; 
+
             setCurrentTime(currentTime)
             setCurrentHour(currentHour)
-            setCurrentMinute(currentMinute);
+            setCurrentMinute(formattedMinute);
         };
 
         updateCurrentTime();
@@ -46,7 +49,9 @@ const TimePart: React.FC<TimePartInterface> = () =>
              justify-start
              gap-x-4
             ">
-                <img src={sunIcon} alt="sun icon" />
+                <img src={(currentHour > 5 && currentHour < 18) ?
+                            sunIcon : moonIcon} 
+                    alt="sun icon" />
                 <span className="
                  xl:text-xl
                  md:text-lg
