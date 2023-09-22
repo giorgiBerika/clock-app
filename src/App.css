@@ -1,13 +1,22 @@
-*
+*,
+*::before,
+*::after
 {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-.bottom-section-bg
+
+.bottom-section-bg-day
 {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(20.387113571166992px);
     
+}
+
+.bottom-section-bg-night
+{
+    background: rgba(0, 0, 0, 0.75);
+backdrop-filter: blur(20.387113571166992px);
 }
 

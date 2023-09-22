@@ -2,11 +2,9 @@ import React from "react";
 import { useMyContext } from "../../App";
 import btnArrow from '../../assets/small-icons/icon-arrow-up.svg'
 
-interface ToggleButtonInterface{
 
-}
 
-const ToggleBtn: React.FC<ToggleButtonInterface> = () => 
+const ToggleBtn: React.FC = () => 
 {
     const {moreInfo, toggleMoreInfo} = useMyContext();
 

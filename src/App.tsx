@@ -1,14 +1,15 @@
 import './App.css'
-import React, {  useState, createContext, useContext, ReactNode, useEffect } from 'react'
+import React, {  useState, createContext, useContext, ReactNode} from 'react'
 
 import { TopSection, BottomSection } from './sections/main';
-import axios from 'axios';
+
 interface MyContextValue {
   moreInfo: boolean;
   timeZone: string;
   dayYear: string | number;
   dayWeek: string | number;
   weekNumber: string | number;
+  changeCurrentHour: (newVal: number) => void;
   changeWeekNumber: (newVal: string | number) => void;
   changeDayWeek: (newVal: string | number) => void;
   changeDayYear: (newVal: string | number) => void;
@@ -28,11 +29,17 @@ const MyContextProvider: React.FC<MyContextProviderProps> = ({children}) =>
 {
   const [moreInfo, setMoreInfoOpen] = useState<boolean>(false);
 
+  const [currentGlobHour, setCurrentGlobHour] = useState<number>(12);
+
   const [timeZone, setTimeZone] = useState<string>('');
   const [dayYear, setDayYear] = useState<string | number>('');
   const [dayWeek, setDayWeek] = useState<string | number>('');
   const [weekNumber, setWeekNumber] = useState<string | number>('');
   
+  const changeCurrentHour = (currentHour: number) => 
+  {
+    setCurrentGlobHour(currentHour)
+  }
   const toggleMoreInfo = (openedInfo: boolean) => 
   {
     setMoreInfoOpen(openedInfo);
@@ -59,6 +66,7 @@ const MyContextProvider: React.FC<MyContextProviderProps> = ({children}) =>
     dayYear,
     dayWeek,
     weekNumber,
+    changeCurrentHour,
     changeWeekNumber,
     changeDayWeek,
     changeDayYear,
@@ -80,33 +88,18 @@ export const useMyContext = (): MyContextValue => {
 
 const App: React.FC = () =>{
 
+  const [currentGlobTime, setCurrentGlobTime] = useState<number>(12);
 
-  // useEffect(() => {
-  //   async function getWorldTime() {
-  //     try {
-
-  //       const response = await axios.get('http://worldtimeapi.org/api/timezone/Asia/Tbilisi');
-  //       console.log(response.data.day_of_week);
-  //       changeDayWeek()
-        
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   }
-  //   getWorldTime();
-  // }, [])
   return (
     <>
     <MyContextProvider>
       <section className={`
         w-screen
         h-screen
-
-
-        lg:bg-desktopDay
-        sm:bg-tabletDay
-        bg-mobileDay
-
+       ${(currentGlobTime > 6 && currentGlobTime < 17) ? 
+        'lg:bg-desktopDay sm:bg-tabletDay bg-mobileDay' :
+        'lg:bg-desktopNight sm:bg-tabletNight bg-mobileNight' 
+      }
         bg-center
         bg-no-repeat
         bg-cover
@@ -117,12 +110,12 @@ const App: React.FC = () =>{
         `}>
         
         <TopSection 
+        setCurrentGlobTime={setCurrentGlobTime}
         />
-        <BottomSection />
-        
 
-        {/* <button type='button' onClick={onClickHandler}>click it</button> */}
-        
+        <BottomSection 
+        currentGlobTime={currentGlobTime}
+        />        
       </section>
     </MyContextProvider>
     </>

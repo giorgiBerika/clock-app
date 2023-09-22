@@ -3,10 +3,10 @@ import { useMyContext } from "../../App";
 import { RandomQuote, TimePart, ToggleBtn } from "../../components/main";
 
 interface TopSectionInterface {
-
+ setCurrentGlobTime: (newTime: number) => void;
 }
 
-const TopSection: React.FC<TopSectionInterface> = () => 
+const TopSection: React.FC<TopSectionInterface> = ({setCurrentGlobTime}) => 
 {
     const {moreInfo} = useMyContext();
 
@@ -48,7 +48,9 @@ const TopSection: React.FC<TopSectionInterface> = () =>
                  w-full
                  
                 `}>
-                    <TimePart />
+                    <TimePart 
+                        setCurrentGlobTime={setCurrentGlobTime}
+                    />
                     <ToggleBtn />
                 </div>
 
