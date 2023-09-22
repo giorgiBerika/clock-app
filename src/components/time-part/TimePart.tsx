@@ -10,8 +10,8 @@ interface TimePartInterface{
 const TimePart: React.FC<TimePartInterface> = () => 
 {   
     const [currentTime, setCurrentTime] = useState<string>('');
-    const [currentHour, setCurrentHour] = useState<number>();
-    const [currentMinute, setCurrentMinute] = useState<number>();
+    const [currentHour, setCurrentHour] = useState<number>(12);
+    const [currentMinute, setCurrentMinute] = useState<number>(22);
     
     useEffect(() => {
         function updateCurrentTime() {
@@ -54,7 +54,15 @@ const TimePart: React.FC<TimePartInterface> = () =>
                  font-normal
                  leading-wide
                  
-                ">GOOD MORNING, IT’S CURRENTLY</span>
+                ">
+                    
+                {(currentHour > 5 && currentHour < 12) 
+                    ? 'good morning' 
+                    : (currentHour >= 12 && currentHour <6) 
+                    ? 'good afternoon'
+                    : 'good evening'
+                }, IT’S CURRENTLY
+                </span>
 
             </div>
             <div className={`
