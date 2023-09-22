@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import sunIcon from '../../assets/small-icons/icon-sun.svg'
 import moonIcon from '../../assets/small-icons/icon-moon.svg'
@@ -8,7 +8,28 @@ interface TimePartInterface{
 }
 
 const TimePart: React.FC<TimePartInterface> = () => 
-{
+{   
+    const [currentTime, setCurrentTime] = useState<string>('');
+    const [currentHour, setCurrentHour] = useState<number>();
+    const [currentMinute, setCurrentMinute] = useState<number>();
+    
+    useEffect(() => {
+        function updateCurrentTime() {
+            const newDate = new Date();
+            const currentHour = newDate.getHours();
+            const currentMinute = newDate.getMinutes();
+            setCurrentTime(currentTime)
+            setCurrentHour(currentHour)
+            setCurrentMinute(currentMinute);
+        };
+
+        updateCurrentTime();
+
+        const intervalId = setInterval(updateCurrentTime, 1000);
+
+        return () => clearInterval(intervalId);
+    }, []);
+
     return (
         <>
           <div className={`
@@ -34,8 +55,6 @@ const TimePart: React.FC<TimePartInterface> = () =>
                  leading-wide
                  
                 ">GOOD MORNING, IT’S CURRENTLY</span>
-                {/* xl-1280 */}
-                {/* md-768 */}
 
             </div>
             <div className={`
@@ -53,7 +72,7 @@ const TimePart: React.FC<TimePartInterface> = () =>
                  leading-8
                  font-bold
 
-                ">11:37</h2>
+                ">{currentHour}:{currentMinute}</h2>
                 <span className="
                  lg:text-4xl
                  md:text-3xl
@@ -70,8 +89,9 @@ const TimePart: React.FC<TimePartInterface> = () =>
              font-bold
              leading-7
              tracking-wide
+             uppercase
             ">
-                IN LONDON, UK
+                in Tbilisi, Georgia
             </span>
           </div>
         </>

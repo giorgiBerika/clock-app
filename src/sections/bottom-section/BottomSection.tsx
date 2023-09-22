@@ -40,7 +40,6 @@ const BottomSection: React.FC<BottomSectionInterface> = () =>
            gap-y-[148px]
            py-16
            pl-40
-
           `}>
             <div className={`
              flex

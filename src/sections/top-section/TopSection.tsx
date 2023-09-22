@@ -34,9 +34,7 @@ const TopSection: React.FC<TopSectionInterface> = () =>
 
                 ${moreInfo ? 'h-1/2 xl:pb-14 ' : 'h-full'}
             `}>
-                <RandomQuote />
-                {/* {!moreInfo && 
-                } */}
+                <RandomQuote /> 
 
                 <div className={`
                  flex
