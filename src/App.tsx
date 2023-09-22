@@ -93,7 +93,9 @@ const App: React.FC = () =>{
         'lg:bg-desktopDay sm:bg-tabletDay bg-mobileDay' :
         'lg:bg-desktopNight sm:bg-tabletNight bg-mobileNight' 
         }
-        'lg:bg-desktopDay sm:bg-tabletDay bg-mobileDay'
+        lg:bg-desktopDay 
+        sm:bg-tabletDay 
+        bg-mobileDay
         bg-center
         bg-no-repeat
         bg-cover
